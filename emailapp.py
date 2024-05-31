@@ -48,7 +48,8 @@ if upload is not None:
 button = st.button('Check file for spam')
 if button:
     if upload:
-        prediction = model.predict(vectorizer.transform([upload]))
+        string_data = stringio.getvalue()
+        prediction = model.predict(vectorizer.transform([string_data]))
         if prediction[0] == 1:
             st.write("This email is classified as safe and not spam.")
         else:
